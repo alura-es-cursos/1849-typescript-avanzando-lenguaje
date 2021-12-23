@@ -8,8 +8,13 @@ import { View } from "./views/view.js";
 
 const negociacionController = new NegociacionController();
 const form = document.querySelector('.form');
-form.addEventListener('submit',event => {
-    event.preventDefault();
-    negociacionController.agrega();
-})
+if (form) {
+    form.addEventListener('submit',event => {
+        event.preventDefault();
+        negociacionController.agrega();
+    });
+    
+} else {
+    throw Error("No fue posible inicializar la aplicación. Verifique el elemento form");
+}
 

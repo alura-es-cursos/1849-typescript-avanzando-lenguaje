@@ -13,13 +13,16 @@ export class NegociacionController {
     private mensajeView = new MensajeView('#mensajeview');
 
     constructor() {
-        this.inputFecha = document.querySelector('#fecha');
-        this.inputCantidad = document.querySelector('#cantidad');
-        this.inputValor = document.querySelector('#valor');
+        this.inputFecha = <HTMLInputElement>document.querySelector('#fecha');
+        this.inputCantidad = document.querySelector('#cantidad') as HTMLInputElement;
+        this.inputValor = document.querySelector('#valor') as HTMLInputElement;
         this.negociacionesView.update(this.negociaciones);
     }
 
     public agrega() : void {
+        /*
+            Equipo, recordar crear la negociación con métodos estáticos
+        */
         const negociacion = Negociacion.crearNegociacion(this.inputFecha.value, 
                                                         this.inputCantidad.value,
                                                         this.inputValor.value);
