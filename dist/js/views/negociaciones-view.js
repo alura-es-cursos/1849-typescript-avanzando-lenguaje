@@ -1,7 +1,5 @@
-export class NegociacionesView {
-    constructor(selector) {
-        this.selectorDiv = document.querySelector(selector);
-    }
+import { View } from './view.js';
+export class NegociacionesView extends View {
     template(model) {
         return `
         <table class="table">
@@ -25,10 +23,5 @@ export class NegociacionesView {
             </tbody>
         </table>
         `;
-    }
-    update(model) {
-        const template = this.template(model);
-        console.log(template);
-        this.selectorDiv.innerHTML = template;
     }
 }

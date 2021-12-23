@@ -4,6 +4,7 @@ const negociacion = new Negociacion(new Date(),20,1000);
 */
 
 import { NegociacionController } from "./controllers/negociacion-controller.js";
+import { View } from "./views/view.js";
 
 const negociacionController = new NegociacionController();
 const form = document.querySelector('.form');
@@ -11,3 +12,4 @@ form.addEventListener('submit',event => {
     event.preventDefault();
     negociacionController.agrega();
 })
+
