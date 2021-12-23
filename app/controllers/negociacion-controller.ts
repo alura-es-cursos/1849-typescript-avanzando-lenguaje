@@ -20,7 +20,10 @@ export class NegociacionController {
     }
 
     public agrega() : void {
-        const negociacion = this.crearNegociacion();
+        const negociacion = Negociacion.crearNegociacion(this.inputFecha.value, 
+                                                        this.inputCantidad.value,
+                                                        this.inputValor.value);
+        
         if (!this.esDiaComercial(negociacion.fecha)) {
             this.mensajeView.update('Sólo son aceptadas las negociaciones, en días comerciales.');
             return;
@@ -35,18 +38,7 @@ export class NegociacionController {
             && fecha.getDay() < diasSemana.SABADO;
     }
 
-    private crearNegociacion() : Negociacion {
-        const regexp = /-/g;
-        const fecha = this.inputFecha.value.replace(regexp,',');
-        const cantidad = parseInt(this.inputCantidad.value);
-        const valor = parseFloat(this.inputValor.value);
-        return new Negociacion(
-            new Date(fecha),
-            cantidad,
-            valor
-        );
-    }
-
+    
     private limpiaFormulario() : void {
         this.inputFecha.value = '';
         this.inputCantidad.value = '';

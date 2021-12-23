@@ -11,4 +11,11 @@ export class Negociacion {
     get total() {
         return this.cantidad * this.valor;
     }
+    static crearNegociacion(fechaString, cantidadString, valorString) {
+        const regexp = /-/g;
+        const fecha = fechaString.replace(regexp, ',');
+        const cantidad = parseInt(cantidadString);
+        const valor = parseFloat(valorString);
+        return new Negociacion(new Date(fecha), cantidad, valor);
+    }
 }
